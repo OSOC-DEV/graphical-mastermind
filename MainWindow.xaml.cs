@@ -23,7 +23,7 @@ namespace mastermind_gui
         int counter;
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); //Start MainWindow
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
