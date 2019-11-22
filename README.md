@@ -1,1 +1,1 @@
-# graphical-mastermind
+# Graphical Mastermind
