@@ -7,39 +7,18 @@
         mc:Ignorable="d"
         Title="Mastermind" Height="450" Width="800">
     <Window.Resources>
-        <Storyboard x:Key="OnClick1">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="progress">
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.926"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="progress">
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.318"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="progress">
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-23.214"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="progress">
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-28.571"/>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
+        
+        
     </Window.Resources>
     <Grid>
-        <Label x:Name="label" Content="Click the button" HorizontalAlignment="Center" Height="29" VerticalAlignment="Center" Width="113" Cursor="Hand" ToolTip="Click the BUTTON. Not ME!!!!!" FontStyle="Italic" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform X="11"/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Button x:Name ="diebutton" Content="Check" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Click="Button_Click" Cursor="Hand" ToolTip="Click MEEEEEEEEEEE!" RenderTransformOrigin="0.5,0.5">
+        <Label x:Name="label" Content="Click the button" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Height="29" VerticalAlignment="Center" Width="113" Cursor="Hand" ToolTip="Click the BUTTON. Not ME!!!!!" FontStyle="Italic" RenderTransformOrigin="0.5,0.5"/>
+        <Button x:Name ="checkbutton" Content="Check" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Click="Button_Click" Cursor="Hand" ToolTip="Click MEEEEEEEEEEE!" RenderTransformOrigin="0.5,0.5" Style="{DynamicResource TestButtonStyle}">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
                     <RotateTransform/>
-                    <TranslateTransform Y="-50"/>
+                    <TranslateTransform Y="59"/>
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
@@ -49,7 +28,7 @@
                     <ScaleTransform/>
                     <SkewTransform/>
                     <RotateTransform/>
-                    <TranslateTransform Y="-100"/>
+                    <TranslateTransform Y="-54"/>
                 </TransformGroup>
             </ProgressBar.RenderTransform>
         </ProgressBar>

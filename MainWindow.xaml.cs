@@ -19,31 +19,34 @@ namespace mastermind_gui
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+
     public partial class MainWindow : Window
     {
+        readonly DispatcherTimer timer = new DispatcherTimer();
+
         public MainWindow()
         {
             InitializeComponent(); //Start MainWindow
+            timer.Interval = TimeSpan.FromMilliseconds(25);
+            timer.Tick += TimerTick;
         }
 
         public void Button_Click(object sender, RoutedEventArgs e)
         {
-            Randnum randnum = new Randnum();
-            label.Content = randnum.Randint(1, 1000);
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(25);
-            timer.Tick += TimerTick;
+            label.Content = "Checking";
             timer.Start();
 
         }
 
         private void TimerTick(object sender, EventArgs e)
         {
-            progress.Value = progress.Value + 0.25;
+            progress.Value += 1;
             if (progress.Value >= 100)
             {
-                
                 progress.Value = 0;
+                Randnum randnum = new Randnum();
+                label.Content = randnum.Randint(1, 1000);
+                timer.Stop();
             }
         }
 
