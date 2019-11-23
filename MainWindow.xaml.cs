@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace mastermind_gui
 {
@@ -34,6 +37,7 @@ namespace mastermind_gui
         public void Button_Click(object sender, RoutedEventArgs e)
         {
             label.Content = "Checking";
+            Analytics.TrackEvent("Check Button Clicked");
             timer.Start();
 
         }
