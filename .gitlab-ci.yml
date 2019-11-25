@@ -1,6 +1,6 @@
 image: microsoft/dotnet:latest
 build:
-stage: build
-  script:
-  - nuget restore
-  - msbuild /t:Build /p:Configuration="Release" /p:Platform="Any CPU" mastermind-gui.sln
+  stage: build
+    script:
+      - nuget restore
+      - msbuild /t:Build /p:Configuration="Release" /p:Platform="Any CPU" mastermind-gui.sln
