@@ -3,8 +3,7 @@
 ################################################################################
 
 /.vs
-/bin/Debug
 /obj
+/bin/debug
 /packages
-/bin/Release
 /UpgradeLog.htm
