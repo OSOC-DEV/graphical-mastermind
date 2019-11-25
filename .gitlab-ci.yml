@@ -23,10 +23,10 @@
 
 # place project specific paths in variables to make the rest of the script more generic
 variables:
-  EXE_RELEASE_FOLDER: 'YourApp\bin\Release'
+  EXE_RELEASE_FOLDER: 'Graphical-Mastermind\bin\Release'
   MSI_RELEASE_FOLDER: 'Setup\bin\Release'
   TEST_FOLDER: 'Tests\bin\Release'
-  DEPLOY_FOLDER: 'P:\Projects\YourApp\Builds'
+  DEPLOY_FOLDER: 'P:\Projects\Graphical-Mastermind\Builds'
   NUGET_PATH: 'C:\NuGet\nuget.exe'
   MSBUILD_PATH: 'C:\Program Files (x86)\MSBuild\14.0\Bin\msbuild.exe'
   NUNIT_PATH: 'C:\Program Files (x86)\NUnit.org\nunit-console\nunit3-console.exe'
@@ -46,8 +46,8 @@ build_job:
   artifacts:
     expire_in: 1 week  # save gitlab server space, we copy the files we need to deploy folder later on
     paths:
-      - '$env:EXE_RELEASE_FOLDER\YourApp.exe'  # saving exe to copy to deploy folder
-      - '$env:MSI_RELEASE_FOLDER\YourApp Setup.msi'  # saving msi to copy to deploy folder
+      - '$env:EXE_RELEASE_FOLDER\mastermind-gui.exe'  # saving exe to copy to deploy folder
+      - '$env:MSI_RELEASE_FOLDER\mastermind-gui.msi'  # saving msi to copy to deploy folder
       - '$env:TEST_FOLDER\'  # saving entire Test project so NUnit can run tests
 
 test_job:
