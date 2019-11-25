@@ -22,6 +22,7 @@
 
 
 # place project specific paths in variables to make the rest of the script more generic
+image: windows-docker-2019
 variables:
   EXE_RELEASE_FOLDER: 'mastermind-gui\bin\Release'
   MSI_RELEASE_FOLDER: 'Setup\bin\Release'
