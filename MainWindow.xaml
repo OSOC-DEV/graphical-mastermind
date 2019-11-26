@@ -11,7 +11,7 @@
         
     </Window.Resources>
     <Grid>
-        <Label x:Name="label" Content="Click the button" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Height="29" VerticalAlignment="Center" Width="113" Cursor="Hand" ToolTip="Click the BUTTON. Not ME!!!!!" FontStyle="Italic" RenderTransformOrigin="0.5,0.5"/>
+        <Label x:Name="label" Content="Click the button" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Height="29" VerticalAlignment="Center" Width="200" Cursor="Hand" ToolTip="Click the BUTTON. Not ME!!!!!" FontStyle="Italic" RenderTransformOrigin="0.5,0.5"/>
         <Button x:Name ="checkbutton" Content="Check" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Click="Button_Click" Cursor="Hand" ToolTip="Click MEEEEEEEEEEE!" RenderTransformOrigin="0.5,0.5" Style="{DynamicResource TestButtonStyle}">
             <Button.RenderTransform>
                 <TransformGroup>

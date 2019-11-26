@@ -44,7 +44,11 @@ namespace mastermind_gui
                         label.Content = "Correct";
                         Initialize();
                     }
-                    else if (Int32.Parse(text) > randomnum)
+                    else if (text.Length != 4)
+                    {
+                        label.Content = "Enter a Four digit number";
+                    }
+                else if (Int32.Parse(text) > randomnum)
                     {
                         label.Content = "Too High";
                     }
@@ -52,10 +56,7 @@ namespace mastermind_gui
                     {
                         label.Content = "Too Low";
                     }
-                    else if (text.Length != 4)
-                    {
-                        label.Content = "Enter a Four digit number";
-                    }
+
                 }
                 catch (System.FormatException)
                 {
@@ -67,6 +68,7 @@ namespace mastermind_gui
         public MainWindow()
         {
             InitializeComponent(); //Start MainWindow
+            Initialize();
             timer.Interval = TimeSpan.FromMilliseconds(25);
             timer.Tick += TimerTick;
         }
