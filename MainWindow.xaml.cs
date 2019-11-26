@@ -28,10 +28,13 @@ namespace mastermind_gui
         readonly Randnum randnum = new Randnum();
         readonly DispatcherTimer timer = new DispatcherTimer();
         int randomnum = 0;
+        int count = 0;
 
         int Initialize()
         {
+            count = 0;
             randomnum = randnum.Randint(1000, 9999);
+            Console.WriteLine(randomnum);
             return 0;
         }
 
@@ -41,21 +44,27 @@ namespace mastermind_gui
                 {
                     if (Int32.Parse(text) == randomnum)
                     {
-                        label.Content = "Correct";
+                        label.Content = "Correct. You took " + count + " Tries.";
                         Initialize();
                     }
                     else if (text.Length != 4)
                     {
                         label.Content = "Enter a Four digit number";
+                        guess.Text = "";
+                        count += 1;
                     }
                     else if (Int32.Parse(text) > randomnum)
                     {
                         label.Content = "Too High";
-                    }
+                        guess.Text = "";
+                        count += 1;
+                }
                     else if (Int32.Parse(text) < randomnum)
                     {
                         label.Content = "Too Low";
-                    }
+                        guess.Text = "";
+                        count += 1;
+                }
 
                 }
                 catch (System.FormatException)
@@ -69,7 +78,7 @@ namespace mastermind_gui
         {
             InitializeComponent(); //Start MainWindow
             Initialize();
-            timer.Interval = TimeSpan.FromMilliseconds(25);
+            timer.Interval = TimeSpan.FromMilliseconds(15);
             timer.Tick += TimerTick;
         }
 
