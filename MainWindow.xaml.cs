@@ -48,7 +48,7 @@ namespace mastermind_gui
                     {
                         label.Content = "Enter a Four digit number";
                     }
-                else if (Int32.Parse(text) > randomnum)
+                    else if (Int32.Parse(text) > randomnum)
                     {
                         label.Content = "Too High";
                     }
