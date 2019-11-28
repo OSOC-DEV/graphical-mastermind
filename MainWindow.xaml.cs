@@ -16,6 +16,7 @@ using System.Windows.Threading;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using System.IO;
 
 namespace mastermind_gui
 {
@@ -29,6 +30,8 @@ namespace mastermind_gui
         readonly DispatcherTimer timer = new DispatcherTimer();
         int randomnum = 0;
         int count = 0;
+        string highfile = "scorehigh.txt";
+        string lowfile = "scorelow.txt";
 
         int Initialize()
         {
@@ -45,6 +48,10 @@ namespace mastermind_gui
                     if (Int32.Parse(text) == randomnum)
                     {
                         label.Content = "Correct. You took " + count + " Tries.";
+                        if (Int32.Parse(File.ReadAllText(@lowfile)) > count){
+                            Console.WriteLine("DEBUG");
+                            File.WriteAllText(@lowfile, count.ToString());
+                        }
                         Initialize();
                     }
                     else if (text.Length != 4)
