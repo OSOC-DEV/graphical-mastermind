@@ -30,14 +30,23 @@ namespace mastermind_gui
         readonly DispatcherTimer timer = new DispatcherTimer();
         int randomnum = 0;
         int count = 0;
-        string highfile = "scorehigh.txt";
-        string lowfile = "scorelow.txt";
+        readonly string highfile = "scorehigh.txt";
+        readonly string lowfile = "scorelow.txt";
 
         int Initialize()
         {
             count = 0;
             randomnum = randnum.Randint(1000, 9999);
             Console.WriteLine(randomnum);
+            if (File.Exists(@lowfile))
+            {
+
+            }
+            else
+            {
+                File.Create(@lowfile);
+                File.WriteAllText(@lowfile, "90000");
+            }
             return 0;
         }
 
