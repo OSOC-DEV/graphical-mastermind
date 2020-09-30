@@ -4,6 +4,6 @@
 
 /.vs
 /obj
-/bin/debug
+/bin
 /packages
 /UpgradeLog.htm
