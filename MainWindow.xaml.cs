@@ -1,21 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
-using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
 using System.IO;
 
 namespace mastermind_gui
@@ -24,68 +10,66 @@ namespace mastermind_gui
     /// Interaction logic for MainWindow.xaml
     /// </summary>
 
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
-        readonly Randnum randnum = new Randnum();
-        readonly DispatcherTimer timer = new DispatcherTimer();
-        int randomnum = 0;
-        int count = 0;
-        readonly string highfile = "scorehigh.txt";
-        readonly string lowfile = "scorelow.txt";
+        readonly Randnum _randnum = new Randnum();
+        readonly DispatcherTimer _timer = new DispatcherTimer();
+        int _randomnum;
+        int _count;
+        readonly string _lowfile = "scorelow.txt";
 
-        int Initialize()
+        private void Initialize()
         {
-            count = 0;
-            randomnum = randnum.Randint(1000, 9999);
-            Console.WriteLine(randomnum);
-            if (File.Exists(@lowfile))
+            _count = 0;
+            _randomnum = _randnum.Randint(1000, 9999);
+            Console.WriteLine(_randomnum);
+            if (File.Exists(_lowfile))
             {
 
             }
             else
             {
-                File.Create(@lowfile);
-                File.WriteAllText(@lowfile, "90000");
+                File.Create(_lowfile);
+                File.WriteAllText(_lowfile, "90000");
             }
-            return 0;
         }
 
-        void Checker(string text)
+        private void Checker(string text)
         {
                 try
                 {
-                    if (Int32.Parse(text) == randomnum)
+                    if (int.Parse(text) == _randomnum)
                     {
-                        label.Content = "Correct. You took " + count + " Tries.";
-                        if (Int32.Parse(File.ReadAllText(@lowfile)) > count){
+                        Label.Content = "Correct. You took " + _count + " Tries.";
+                        if (Int32.Parse(File.ReadAllText(_lowfile)) > _count){
                             Console.WriteLine("DEBUG");
-                            File.WriteAllText(@lowfile, count.ToString());
+                            File.WriteAllText(_lowfile, _count.ToString());
                         }
                         Initialize();
                     }
                     else if (text.Length != 4)
                     {
-                        label.Content = "Enter a Four digit number";
-                        guess.Text = "";
-                        count += 1;
+                        Label.Content = "Enter a Four digit number";
+                        Guess.Text = "";
+                        _count += 1;
                     }
-                    else if (Int32.Parse(text) > randomnum)
+                    else if (Int32.Parse(text) > _randomnum)
                     {
-                        label.Content = "Too High";
-                        guess.Text = "";
-                        count += 1;
-                }
-                    else if (Int32.Parse(text) < randomnum)
+                        Label.Content = "Too High";
+                        Guess.Text = "";
+                        _count += 1;
+                    }
+                    else if (Int32.Parse(text) < _randomnum)
                     {
-                        label.Content = "Too Low";
-                        guess.Text = "";
-                        count += 1;
-                }
+                        Label.Content = "Too Low";
+                        Guess.Text = "";
+                        _count += 1;
+                    }
 
                 }
-                catch (System.FormatException)
+                catch (FormatException)
                 {
-                    label.Content = "Enter a Four digit number";
+                    Label.Content = "Enter a Four digit number";
                 }
 
         }
@@ -94,27 +78,25 @@ namespace mastermind_gui
         {
             InitializeComponent(); //Start MainWindow
             Initialize();
-            timer.Interval = TimeSpan.FromMilliseconds(15);
-            timer.Tick += TimerTick;
+            _timer.Interval = TimeSpan.FromMilliseconds(15);
+            _timer.Tick += TimerTick;
         }
 
-        public void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            label.Content = "Checking";
+            Label.Content = "Checking";
             Analytics.TrackEvent("Check Button Clicked");
-            timer.Start();
+            _timer.Start();
 
         }
 
         private void TimerTick(object sender, EventArgs e)
         {
-            progress.Value += 1;
-            if (progress.Value >= 100)
-            {
-                progress.Value = 0;
-                Checker(guess.Text);
-                timer.Stop();
-            }
+            Progress.Value += 1;
+            if (!(Progress.Value >= 100)) return;
+            Progress.Value = 0;
+            Checker(Guess.Text);
+            _timer.Stop();
         }
 
     }
